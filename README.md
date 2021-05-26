@@ -18,3 +18,69 @@ The `.csproj` file also contains all the information that .NET tooling needs to 
 `.sln` files used by visual studio for managing projects. A `.sln` file can manage multiple project. To manage the project we have to add `.csproj` to `.sln` file
 
 ![Alt text](screens/solution.png?raw=true "Adding project to solution.")
+
+## Practical VisualStudio shortcuts
+Markdown | Less 
+--- | --- 
+ctrl + F5 | Run the application without debugger
+1 | 2 
+
+
+## Razor
+Razor is a markup syntax that lets you embed server-based code  into web pages.
+
+Scaffolding Razor Pages with the ASP.NET Core Code Generator tool
+
+` dotnet tool install --global dotnet-aspnet-codegenerator` 
+
+installing code generation tool for ASP.NET Core. Contains the dotnet-aspnet-codegenerator command used for generating controllers and views.
+
+` dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design` 
+
+For more detail 
+
+`dotnet aspnet-codegenerator razorpage --help` 
+
+#### Generating a page using the Empty template link
+
+`dotnet aspnet-codegenerator razorpage Product Empty -udl -outDir Pages\Product`
+udl -> use default layout
+
+## Razor Page vs Page Model
+
+Page model doing all the hardwork such as data access, performing business logic and put the data together for Razor page to display. Razor Page performs view part and also provide a way to embed C# code in web page.
+
+```csharp 
+@page
+@model ListModel
+@{
+}
+
+<h1>Restaurants</h1>
+```
+
+```csharp 
+namespace LocantaApp.Pages.Restaurants
+{
+    public class ListModel : PageModel
+    {
+        public void OnGet()
+        {
+        }
+    }
+}
+```
+
+
+## Adding Models 
+
+One of the way for adding entities to our project is actually creating a seperate project that hold models then we add model project to our existing web project.
+
+In visual studio right click on solution  then select `Add->New Project ...` and select `Class Library`.
+
+Creating project `LocantaApp.Core`.
+
+We also create another project in a same way for data access layer. 
+
+Creating project `LocantaApp.Data`.
+
