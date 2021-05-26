@@ -5,20 +5,39 @@
 
 <h1>Restaurants</h1>
 
+<form method="get">
+
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search"  class="form-control"  asp-for="SearchTerm" />
+
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+
+    </div>
+
+</form>
+
+
 <table class="table">
     @foreach (var restaurant in Model.restaurants)
     {
-        <tr>
-            <td>
-                @restaurant.Name
-            </td>
-            <td>
-                @restaurant.Location
-            </td>
-            <td>
-                @restaurant.Cuisine
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @restaurant.Name
+        </td>
+        <td>
+            @restaurant.Location
+        </td>
+        <td>
+            @restaurant.Cuisine
+        </td>
+        <td>
+            <a class="btn btn-success" asp-page="./Detail" asp-route-restaurantId="@restaurant.Id">
+                Detail
+            </a> 
+        </td>
+    </tr>
     }
 
 

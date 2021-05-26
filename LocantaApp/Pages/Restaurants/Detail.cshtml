@@ -1,0 +1,14 @@
+﻿@page "{restaurantId:int}" /*For urls like /Restaurant/Detail/19 */ 
+@model DetailModel
+@{
+}
+<h2>@Model.Restaurant.Name</h2>
+<div>
+    Location: @Model.Restaurant.Location
+</div>
+
+<div>
+    Cuisine: @Model.Restaurant.Cuisine
+</div>
+
+<a asp-page="./List" class="btn btn-primary">All Restaurants</a>
