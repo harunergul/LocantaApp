@@ -31,15 +31,21 @@ Razor is a markup syntax that lets you embed server-based code  into web pages.
 
 Scaffolding Razor Pages with the ASP.NET Core Code Generator tool
 
-` dotnet tool install --global dotnet-aspnet-codegenerator` 
+```bash 
+dotnet tool install --global dotnet-aspnet-codegenerator
+```
 
 installing code generation tool for ASP.NET Core. Contains the dotnet-aspnet-codegenerator command used for generating controllers and views.
 
-` dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design` 
+```bash 
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+``` 
 
 For more detail 
 
-`dotnet aspnet-codegenerator razorpage --help` 
+```bash 
+dotnet aspnet-codegenerator razorpage --help
+```
 
 #### Generating a page using the Empty template link
 
@@ -92,3 +98,64 @@ Install framework by right clicking `LocantaApp.Data` project select `Manage NuG
 
 Install all the listed item here
 ![Alt text](screens/installedpackages.png?raw=true "Installing Entity Framework Core.")
+
+Install `dotnet-ef`  command line tool
+
+```bash 
+dotnet tool install --global dotnet-ef
+```
+
+Execute following command inside `LocantaApp.Data` project
+```bash 
+dotnet-ef dbcontext list
+```
+![Alt text](screens/dbcontext.png?raw=true "Installing Entity Framework Core.")
+
+Install `sqlite` using cli in `LocantaApp.Data` folder.
+```bash 
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 5.0.6
+```
+
+We will store connection info inisde `appsettings.json` file which is located inside `LocantaApp`
+
+
+```json 
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*",
+  "AuthorName": "Harun ERGUL",
+  "ConnectionStrings": {
+    "LocantaAppDb": "Data Source=locantaApp.db;Password=simplePassword;"
+  }
+}
+```
+ 
+So how `ConnectionStrings` reach to our `LocantaAppDbContext` and we connect the database?
+The Answer is Startup.cs's `ConfigureServices` method. We will register our DbContext inside this method.
+
+
+```csharp 
+public void ConfigureServices(IServiceCollection services)
+{ 
+    services.AddDbContext<LocantaAppDbContext>(options => {
+        options.UseSqlite(Configuration.GetConnectionString("LocantaAppDb"));
+    });
+
+    ....
+}
+```
+
+Now execute following command inside _*LocantaApp.Data*_ folder. 
+*-s* means startup project.
+
+```bash
+dotnet-ef dbcontext info -s ..\LocantaApp\LocantaApp.csproj
+```
+
+![Alt text](screens/dotnet-ef-info.png?raw=true "dotnet -ef info command")
