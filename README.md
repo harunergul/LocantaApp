@@ -159,3 +159,11 @@ dotnet-ef dbcontext info -s ..\LocantaApp\LocantaApp.csproj
 ```
 
 ![Alt text](screens/dotnet-ef-info.png?raw=true "dotnet -ef info command")
+
+If we only call this command inside *LocantaApp.Data* it will fail. 
+```bash
+dotnet-ef dbcontext info 
+```
+When we run above command, the only information the Entity Framework has available to it is the information that is in this project *LocantaApp.Data*. But *LocantaApp.Data* does not contain startup configuration, *ConfigureServices*, which is inside *LocantaApp* Web Project. And *LocantaApp.Data* also does not have *appsettings.json* file which contains connection strings.
+
+This is one of the situations that we are going to face if we separate our data access components and our *DbContext* from the rest of the application.
