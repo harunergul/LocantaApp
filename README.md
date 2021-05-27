@@ -87,4 +87,5 @@ Creating project `LocantaApp.Data`.
 
 ## Installing Entity Framework for data access
 
+Install framework by right clicking `LocantaApp.Data` project select `Manage NuGet package` and search entityframeworkcore.
 ![Alt text](screens/entityframeworkcoreinstall.png?raw=true "Installing Entity Framework Core.")
