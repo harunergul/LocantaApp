@@ -89,3 +89,6 @@ Creating project `LocantaApp.Data`.
 
 Install framework by right clicking `LocantaApp.Data` project select `Manage NuGet package` and search entityframeworkcore.
 ![Alt text](screens/entityframeworkcoreinstall.png?raw=true "Installing Entity Framework Core.")
+
+Install all the listed item here
+![Alt text](screens/installedpackages.png?raw=true "Installing Entity Framework Core.")
