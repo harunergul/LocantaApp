@@ -65,10 +65,12 @@ namespace LocantaApp.Pages.Restaurants
             else
             {
                 Restaurant = restaturantData.Add(Restaurant);
+
             }
 
             restaturantData.Commit();
-            return RedirectToPage("./Detail", new { restaurantId = Restaurant.Id });
+            TempData["Message"] = "Restaurant saved!";
+            return RedirectToPage("./Detail", new { restaurantId = Restaurant.Id,  });
 
 
 

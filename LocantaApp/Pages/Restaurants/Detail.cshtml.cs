@@ -12,13 +12,16 @@ namespace LocantaApp.Pages.Restaurants
     public class DetailModel : PageModel
     {
         public readonly IRestaurantData RestaurantData;
+        public Restaurant Restaurant { get; set; }
 
+        [TempData]
+        public string Message { get; set; }
 
         public DetailModel(IRestaurantData restaurantData) {
             RestaurantData = restaurantData;
         } 
 
-        public Restaurant Restaurant { get; set; }
+        
         public IActionResult OnGet(int restaurantId)
         {
             Restaurant = new Restaurant();

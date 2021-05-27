@@ -84,3 +84,7 @@ We also create another project in a same way for data access layer.
 
 Creating project `LocantaApp.Data`.
 
+
+## Installing Entity Framework for data access
+
+![Alt text](screens/entityframeworkcoreinstall.png?raw=true "Installing Entity Framework Core.")
