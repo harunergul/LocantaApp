@@ -23,7 +23,7 @@ The `.csproj` file also contains all the information that .NET tooling needs to 
 Markdown | Less 
 --- | --- 
 ctrl + F5 | Run the application without debugger
-1 | 2 
+F7| Change editor from razor page to page model or vice versa.
 
 
 ## Razor

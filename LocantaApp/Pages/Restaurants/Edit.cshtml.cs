@@ -26,12 +26,21 @@ namespace LocantaApp.Pages.Restaurants
         }
 
 
-        public IActionResult OnGet(int restaurantId)
+        public IActionResult OnGet(int? restaurantId) //? marks mean restaurantId is nullable
         {
 
             Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
 
-            Restaurant = restaturantData.GetById(restaurantId);
+            if(restaurantId.HasValue)
+            {
+                Restaurant = restaturantData.GetById(restaurantId.Value);
+            }
+            else
+            {
+                Restaurant = new Restaurant();
+
+            }
+            
             if (Restaurant == null)
             {
                 return RedirectToPage("./NotFound");
@@ -43,13 +52,26 @@ namespace LocantaApp.Pages.Restaurants
         public IActionResult OnPost()
         {
 
-            if(ModelState.IsValid)
+            if(!ModelState.IsValid)
+            {
+                Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
+                return Page();
+            }
+
+            if (Restaurant.Id > 0)
             {
                 Restaurant = restaturantData.Update(Restaurant);
-                restaturantData.Commit();
             }
-            Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
-            return Page();
+            else
+            {
+                Restaurant = restaturantData.Add(Restaurant);
+            }
+
+            restaturantData.Commit();
+            return RedirectToPage("./Detail", new { restaurantId = Restaurant.Id });
+
+
+
 
         }
     }

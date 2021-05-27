@@ -12,6 +12,8 @@ namespace LocantaApp.Data
         IEnumerable<Restaurant> GetRestaurantsByName(string name);
         Restaurant GetById(int restaurantId);
         Restaurant Update(Restaurant updatedRestaurant);
+
+        Restaurant Add(Restaurant newRestaurant);
         int Commit();
     }
 
@@ -65,5 +67,11 @@ namespace LocantaApp.Data
             return 0;
         }
 
+        public Restaurant Add(Restaurant newRestaurant)
+        {
+            newRestaurant.Id = restaurants.Max(r => r.Id)+1;
+            restaurants.Add(newRestaurant);
+            return newRestaurant; 
+        }
     }
 }
