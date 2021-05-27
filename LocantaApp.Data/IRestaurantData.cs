@@ -11,6 +11,8 @@ namespace LocantaApp.Data
     {
         IEnumerable<Restaurant> GetRestaurantsByName(string name);
         Restaurant GetById(int restaurantId);
+        Restaurant Update(Restaurant updatedRestaurant);
+        int Commit();
     }
 
     public class InMemmoryRestaturanData : IRestaurantData
@@ -29,6 +31,7 @@ namespace LocantaApp.Data
 
         }
 
+        
         public Restaurant GetById(int restaurantId)
         {
             return restaurants.SingleOrDefault(r => r.Id == restaurantId);
@@ -42,5 +45,25 @@ namespace LocantaApp.Data
                    orderby r.Name select r;
             
         }
+
+        public Restaurant Update(Restaurant updatedRestaurant)
+        {
+            var restaurant = restaurants.SingleOrDefault(r => r.Id == updatedRestaurant.Id);
+
+            if (restaurant != null)
+            {
+                restaurant.Name = updatedRestaurant.Name;
+                restaurant.Location = updatedRestaurant.Location;
+                restaurant.Cuisine = updatedRestaurant.Cuisine;
+
+            }
+            return restaurant;
+        }
+
+        public int Commit()
+        {
+            return 0;
+        }
+
     }
 }

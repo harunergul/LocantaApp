@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocantaApp", "LocantaApp.cs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocantaApp.Core", "..\LocantaApp.Core\LocantaApp.Core.csproj", "{FBA4BE47-32A2-49E8-BED6-B8183527B7CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocantaApp.Data", "..\LocantaApp.Data\LocantaApp.Data.csproj", "{DA8F0D05-21AC-4012-AF09-180E1DBD51C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocantaApp.Data", "..\LocantaApp.Data\LocantaApp.Data.csproj", "{DA8F0D05-21AC-4012-AF09-180E1DBD51C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
