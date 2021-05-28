@@ -29,7 +29,8 @@ namespace LocantaApp
                 options.UseSqlite(Configuration.GetConnectionString("LocantaAppDb"));
             });
 
-            services.AddSingleton<IRestaurantData, InMemmoryRestaturanData>();
+            // services.AddSingleton<IRestaurantData, InMemmoryRestaturantData>();
+            services.AddScoped<IRestaurantData, SqlRestaurantData>();
             services.AddRazorPages();
         }
 
