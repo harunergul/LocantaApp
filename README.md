@@ -131,7 +131,7 @@ We will store connection info inisde `appsettings.json` file which is located in
   "AllowedHosts": "*",
   "AuthorName": "Harun ERGUL",
   "ConnectionStrings": {
-    "LocantaAppDb": "Data Source=locantaApp.db;Password=simplePassword;"
+    "LocantaAppDb": "Data Source=locantaApp.db;"
   }
 }
 ```
@@ -195,3 +195,10 @@ dotnet-ef migrations list -s ..\LocantaApp\LocantaApp.csproj
 ![executing dotnet -ef info command ](screens/ef-migration.png?raw=true "dotnet -ef info command")
 
 
+* Applying migrations to Database
+```bash
+dotnet-ef database update  -s ..\LocantaApp\LocantaApp.csproj
+```
+
+
+![After applying migrations ](screens/applying-migrations.png?raw=true "dotnet -ef info command")
