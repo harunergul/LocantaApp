@@ -167,3 +167,31 @@ dotnet-ef dbcontext info
 When we run above command, the only information the Entity Framework has available to it is the information that is in this project *LocantaApp.Data*. But *LocantaApp.Data* does not contain startup configuration, *ConfigureServices*, which is inside *LocantaApp* Web Project. And *LocantaApp.Data* also does not have *appsettings.json* file which contains connection strings.
 
 This is one of the situations that we are going to face if we separate our data access components and our *DbContext* from the rest of the application.
+
+
+#### Entity Framework migrations
+Migrations are all about keeping a database schema in sync with the models in application. Any time We make a change in our entities, We can these Entity Framework migrations to create the schema changes that we can appy to our database.
+
+```bash
+dotnet-ef migrations 
+```
+* Adding migrations 
+```bash
+dotnet-ef migrations add initalcreate -s ..\LocantaApp\LocantaApp.csproj
+```
+
+After calling this command we can see our migration inside `Migration` folder. Entity Framework doing some bookkeeping, the most interesting file in here is `...initalcreate.cs` file, that was the name that we gave our migration. And in here, we can see that the Entity Framework created some C# code that invokes an API on this `MigrationBuilder` object that will do things like create new tables.
+
+Entity Framework sees our class in DbSet and decide to create a table.
+ 
+![Migration folder screenshot](screens/migration-folder.png?raw=true "dotnet -ef info command")
+
+
+* For listing migrations
+```bash
+dotnet-ef migrations list -s ..\LocantaApp\LocantaApp.csproj
+```
+
+![executing dotnet -ef info command ](screens/ef-migration.png?raw=true "dotnet -ef info command")
+
+
