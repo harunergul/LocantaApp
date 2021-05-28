@@ -18,9 +18,14 @@
 
 </form>
 
-<a class="btn btn-primary" asp-page="./Edit" >
+<a class="btn btn-primary" asp-page="./Edit">
     Add Restaurant
 </a>
+@if (Model.Message != null)
+{
+    <div class="alert alert-info"> @Model.Message</div>
+}
+
 <table class="table">
     @foreach (var restaurant in Model.restaurants)
     {
@@ -41,13 +46,17 @@
                 <a class="btn btn-success" asp-page="./Edit" asp-route-restaurantId="@restaurant.Id">
                     Edit
                 </a>
+                <a class="btn btn-danger" asp-page="./Delete" asp-route-restaurantId="@restaurant.Id">
+                    Delete
+                </a>
             </td>
         </tr>
     }
-
-
 </table>
 
 
+@section footer {
+    <p> How are you</p>
+}
 <p>@Model.Message</p>
 

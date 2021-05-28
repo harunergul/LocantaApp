@@ -14,9 +14,12 @@ namespace LocantaApp.Pages.Restaurants
     {
         private readonly IConfiguration config;
         private readonly IRestaurantData restaurant;
-
+        
+        
         [BindProperty(SupportsGet =true)] // basic model binding with Page and PageModel
         public string SearchTerm { get; set; }
+        
+        [TempData]
         public string Message { get; set; }
         public IEnumerable<Restaurant> restaurants;
         public ListModel(IConfiguration config, IRestaurantData restaurant)
@@ -28,7 +31,7 @@ namespace LocantaApp.Pages.Restaurants
 
         public void OnGet()
         {
-            Message = config["AuthorName"];
+          //  Message = config["AuthorName"];
             this.restaurants = this.restaurant.GetRestaurantsByName(SearchTerm);
         }
     }
