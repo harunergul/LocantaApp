@@ -71,5 +71,10 @@ namespace LocantaApp.Data
             }
             return restaurant;
         }
+
+        public int GetCount()
+        {
+            return restaurants.Count;
+        }
     }
 }

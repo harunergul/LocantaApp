@@ -202,3 +202,51 @@ dotnet-ef database update  -s ..\LocantaApp\LocantaApp.csproj
 
 
 ![After applying migrations ](screens/applying-migrations.png?raw=true "dotnet -ef info command")
+
+
+## Razor Pages
+
+
+In ASP.NET Core, if an `.cshtml` file begins with `_` underscore, which means they are partial view. So they should not include `@page` directive.
+
+
+## View Components
+
+View components are similar to partial views, but they're much more powerful. View components don't use model binding, and only depend on the data provided when calling into it. 
+
+View components are intended anywhere you have reusable rendering logic that's too complex for a partial view, such as:
+
+* Dynamic navigation menus
+* Tag cloud (where it queries the database)
+* Login panel
+* Shopping cart
+* Recently published articles
+* Sidebar content on a typical blog
+* A login panel that would be rendered on every page and show either  the links to log out or log in, depending on the log in state of - the user
+
+One Significant difference between razor pages and view components is that a view component doesn't respond to an HTTP requests. A view componet is like a partial view. 
+
+
+As you in below *ViewComponent* we have *Invoke* method which acts like a controller, it
+gets data create a model and pass that model to *View* component. 
+RestaurantCountViewComponent uses injected service and make data access then creates it's model.
+
+```csharp
+namespace LocantaApp.ViewComponents
+{
+    public class RestaurantCountViewComponent : ViewComponent
+    {
+        private readonly IRestaurantData restaurantData;
+        public RestaurantCountViewComponent(IRestaurantData restaurantData)
+        {
+            this.restaurantData  =  restaurantData;
+        }
+
+        public IViewComponentResult Invoke()
+        {
+            var count = restaurantData.GetCount();
+            return View(count);
+        }
+    }
+}
+```

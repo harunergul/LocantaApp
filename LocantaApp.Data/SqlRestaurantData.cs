@@ -41,6 +41,12 @@ namespace LocantaApp.Data
             return dbCtx.Restaurants.Find(restaurantId);
         }
 
+        public int GetCount()
+        {
+            // for the performance reason we can cache this value
+            return dbCtx.Restaurants.Count();
+        }
+
         public IEnumerable<Restaurant> GetRestaurantsByName(string name)
         {
 

@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - LocantaApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/fonts/fontawesome-free-5.15.3/css/all.min.css" />
 </head>
 <body>
     <header>
@@ -42,7 +43,7 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             @RenderSection("footer", required: false)
-
+            <vc:restaurant-count></vc:restaurant-count>
             &copy; 2021 - LocantaApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
