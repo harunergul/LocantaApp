@@ -13,14 +13,18 @@ namespace LocantaApp.Pages.R2
     public class CreateModel : PageModel
     {
         private readonly LocantaApp.Data.LocantaAppDbContext _context;
-
-        public CreateModel(LocantaApp.Data.LocantaAppDbContext context)
+        private readonly IHtmlHelper htmlHelper;
+        public IEnumerable<SelectListItem> Cuisines { get; set; }
+        public CreateModel(LocantaApp.Data.LocantaAppDbContext context, IHtmlHelper htmlHelper)
         {
             _context = context;
+            this.htmlHelper = htmlHelper;
+
         }
 
         public IActionResult OnGet()
         {
+            Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
             return Page();
         }
 

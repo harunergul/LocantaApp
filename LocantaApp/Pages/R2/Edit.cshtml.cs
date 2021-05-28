@@ -14,10 +14,14 @@ namespace LocantaApp.Pages.R2
     public class EditModel : PageModel
     {
         private readonly LocantaApp.Data.LocantaAppDbContext _context;
-
-        public EditModel(LocantaApp.Data.LocantaAppDbContext context)
+        private readonly IHtmlHelper htmlHelper;
+        public IEnumerable<SelectListItem> Cuisines { get; set; }
+        
+        public EditModel(LocantaApp.Data.LocantaAppDbContext context,  IHtmlHelper htmlHelper)
         {
             _context = context;
+            this.htmlHelper = htmlHelper;
+            
         }
 
         [BindProperty]
@@ -25,6 +29,8 @@ namespace LocantaApp.Pages.R2
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+
+            Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
             if (id == null)
             {
                 return NotFound();
