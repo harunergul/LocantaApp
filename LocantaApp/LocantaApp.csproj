@@ -14,4 +14,8 @@
     <ProjectReference Include="..\LocantaApp.Data\LocantaApp.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\fonts\" />
+  </ItemGroup>
+
 </Project>
