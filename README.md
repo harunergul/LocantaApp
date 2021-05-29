@@ -801,3 +801,27 @@ Right click on Api folder and add new Item.
 ![Adding API Controller](screens/api-controller.jpg?raw=true "Adding API Controller")
 
 ![Adding API Controller](screens/api-controller-2.jpg?raw=true "Adding API Controller")
+
+
+## Adding client side libraries
+
+* Using visual studio
+![Using visual studio to adding client side libraries](screens/adding-client-side-library.png?raw=true "Using visual studio to adding client side libraries")
+
+
+
+* Managing Client Libraries Using npm and NodeJS
+  
+  * initialize npm project inside startup project
+  
+  ```csharp
+  npm init
+  ```
+  
+
+![Development and prod scripts](screens/development-vs-prod-script.jpg?raw=true "Development and prod scripts")
+
+By default static files only served from `wwwroot` folder, but this behaviour is configured for this application. If we do not serve any static file we can remove this folder from our application. We can rename this folder and also we can add extra folders for static file handling.
+
+
+![Development and prod scripts](screens/wwwroot-alternative.jpg?raw=true "Development and prod scripts")
