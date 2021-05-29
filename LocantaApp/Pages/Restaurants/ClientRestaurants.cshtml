@@ -5,13 +5,16 @@
 
 <h2>Client Restaurants</h2>
 
+<table class="table" id="restaurants">
+
+</table>
+
 @section Scripts{
 
     <environment include="Development">
-        <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
+        <link href="~/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
         <script src="~/node_modules/datatables.net/js/jquery.dataTables.js"></script>
-        <link href="~/node_modules/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-        <script src="~/node_modules/datatables.net-bs/js/dataTables.bootstrap.js"></script>
+        <script src="~/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
 
     </environment>
 
@@ -28,6 +31,19 @@
                 method: "get"
             }).then(function (response) {
 
+                var cuisines = ["", "Mexican", "Italian", "Turkish", "Indian"];
+                $("#restaurants").dataTable({
+                    data: response,
+                    columns: [
+                        { "data": "name" , "title": "Name"},
+                        { "data": "location", "title": "Location" },
+                        {
+                            "data": "cuisine", "title": "Cuisine", "render": function (data) {
+                                return cuisines[data];
+                            },
+                        }
+                    ]
+                })
                 console.log(response);
 
 
