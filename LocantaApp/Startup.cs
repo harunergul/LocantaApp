@@ -78,7 +78,7 @@ namespace LocantaApp
         {
             return async ctx =>
             {
-                if (ctx.Request.Path == "/hello")
+                if (ctx.Request.Path.StartsWithSegments("/hello"))
                 {
                     await ctx.Response.WriteAsync("Hello, World!");
                 }
