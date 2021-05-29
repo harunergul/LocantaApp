@@ -111,7 +111,7 @@ Execute following command inside `LocantaApp.Data` project
 ```bash 
 dotnet-ef dbcontext list
 ```
-![Alt text](screens/dbcontext.png?raw=true "Installing Entity Framework Core.")
+![DB Context](screens/dbcontext.PNG?raw=true "Installing Entity Framework Core.")
 
 Install `sqlite` using cli in `LocantaApp.Data` folder.
 ```bash 
@@ -160,7 +160,7 @@ Now execute following command inside _*LocantaApp.Data*_ folder.
 dotnet-ef dbcontext info -s ..\LocantaApp\LocantaApp.csproj
 ```
 
-![Alt text](screens/dotnet-ef-info.png?raw=true "dotnet -ef info command")
+![Alt text](screens/dotnet-ef-info.PNG?raw=true "dotnet -ef info command")
 
 If we only call this command inside *LocantaApp.Data* it will fail. 
 ```bash
@@ -203,7 +203,7 @@ dotnet-ef database update  -s ..\LocantaApp\LocantaApp.csproj
 ```
 
 
-![After applying migrations ](screens/applying-migrations.png?raw=true "dotnet -ef info command")
+![After applying migrations ](screens/applying-migrations.PNG?raw=true "dotnet -ef info command")
 
 
 ## Razor Pages
@@ -371,7 +371,7 @@ Execute following command inside `LocantaApp.Data` project
 ```bash 
 dotnet-ef dbcontext list
 ```
-![Alt text](screens/dbcontext.png?raw=true "Installing Entity Framework Core.")
+![Alt text](screens/dbcontext.PNG?raw=true "Installing Entity Framework Core.")
 
 Install `sqlite` using cli in `LocantaApp.Data` folder.
 ```bash 
@@ -782,25 +782,25 @@ Create a folder inside Pages than do the rest
 
 ![Razor Pages Using Entity Framework (CRUD) ](screens/razorpageusingcrud.jpg?raw=true "Razor Pages Using Entity Framework (CRUD)")
 
-![Razor Page (CRUD) ](screens/razorpage-crud-model.png?raw=true "Razor Pages(CRUD)")
+![Razor Page (CRUD) ](screens/razorpage-crud-model.PNG?raw=true "Razor Pages(CRUD)")
 
-![Scaffolded Page ](screens/scaffolded-page.jpg?raw=true "Scaffolded Page")
+![Scaffolded Page ](screens/scaffolded-page.JPG?raw=true "Scaffolded Page")
 
 
 ## Enforcing validation on the client using `partial` 
 
 We can embed our scripts using `partial` tag to embed our page. In the below example we embed our validation script which will apply validation rule according to our validation info which we have defined on the entity object. 
 
-![Validation Script Partial](screens/validation-script-partial.jpg?raw=true "Validation Script Partial")
+![Validation Script Partial](screens/validation-script-partial.JPG?raw=true "Validation Script Partial")
 
 
 ## Creating an API Controller that responde HTTP Requests
 
 Right click on Api folder and add new Item.
 
-![Adding API Controller](screens/api-controller.jpg?raw=true "Adding API Controller")
+![Adding API Controller](screens/api-controller.JPG?raw=true "Adding API Controller")
 
-![Adding API Controller](screens/api-controller-2.jpg?raw=true "Adding API Controller")
+![Adding API Controller](screens/api-controller-2.JPG?raw=true "Adding API Controller")
 
 
 ## Adding client side libraries
@@ -819,9 +819,9 @@ Right click on Api folder and add new Item.
   ```
   
 
-![Development and prod scripts](screens/development-vs-prod-script.jpg?raw=true "Development and prod scripts")
+![Development and prod scripts](screens/development-vs-prod-script.JPG?raw=true "Development and prod scripts")
 
 By default static files only served from `wwwroot` folder, but this behaviour is configured for this application. If we do not serve any static file we can remove this folder from our application. We can rename this folder and also we can add extra folders for static file handling.
 
 
-![Development and prod scripts](screens/wwwroot-alternative.jpg?raw=true "Development and prod scripts")
+![Development and prod scripts](screens/wwwroot-alternative.JPG?raw=true "Development and prod scripts")
