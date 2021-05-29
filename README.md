@@ -778,7 +778,7 @@ namespace LocantaApp.ViewComponents
 Create a folder inside Pages than do the rest
 
 ![Adding scaffolded item ](screens/scaffolded-item.png?raw=true "Adding scaffolded item")
-
+ 
 
 ![Razor Pages Using Entity Framework (CRUD) ](screens/razorpageusingcrud.jpg?raw=true "Razor Pages Using Entity Framework (CRUD)")
 
