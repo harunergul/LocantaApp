@@ -786,3 +786,18 @@ Create a folder inside Pages than do the rest
 
 ![Scaffolded Page ](screens/scaffolded-page.jpg?raw=true "Scaffolded Page")
 
+
+## Enforcing validation on the client using `partial` 
+
+We can embed our scripts using `partial` tag to embed our page. In the below example we embed our validation script which will apply validation rule according to our validation info which we have defined on the entity object. 
+
+![Validation Script Partial](screens/validation-script-partial.jpg?raw=true "Validation Script Partial")
+
+
+## Creating an API Controller that responde HTTP Requests
+
+Right click on Api folder and add new Item.
+
+![Adding API Controller](screens/api-controller.jpg?raw=true "Adding API Controller")
+
+![Adding API Controller](screens/api-controller-2.jpg?raw=true "Adding API Controller")

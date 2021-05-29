@@ -31,6 +31,7 @@ namespace LocantaApp
 
             // services.AddSingleton<IRestaurantData, InMemmoryRestaturantData>();
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
+            services.AddControllers();
             services.AddRazorPages();
         }
 
@@ -58,6 +59,7 @@ namespace LocantaApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
