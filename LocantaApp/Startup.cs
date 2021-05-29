@@ -85,6 +85,7 @@ namespace LocantaApp
                 else
                 {
                     await nextMiddleware(ctx);
+                    // ctx.Response.StatusCode = 200; we can manipulate after other middlewares completed their processing
                 }
             };
         }
