@@ -359,7 +359,7 @@ Install framework by right clicking `LocantaApp.Data` project select `Manage NuG
 ![Alt text](screens/entityframeworkcoreinstall.png?raw=true "Installing Entity Framework Core.")
 
 Install all the listed item here
-![Alt text](screens/installedpackages.png?raw=true "Installing Entity Framework Core.")
+![Alt text](screens/installedpackages.PNG?raw=true "Installing Entity Framework Core.")
 
 Install `dotnet-ef`  command line tool
 
@@ -420,7 +420,7 @@ Now execute following command inside _*LocantaApp.Data*_ folder.
 dotnet-ef dbcontext info -s ..\LocantaApp\LocantaApp.csproj
 ```
 
-![Alt text](screens/dotnet-ef-info.png?raw=true "dotnet -ef info command")
+![dotnet -ef info command](screens/dotnet-ef-info.PNG?raw=true "dotnet -ef info command")
 
 If we only call this command inside *LocantaApp.Data* it will fail. 
 ```bash
@@ -446,7 +446,7 @@ After calling this command we can see our migration inside `Migration` folder. E
 
 Entity Framework sees our class in DbSet and decide to create a table.
  
-![Migration folder screenshot](screens/migration-folder.png?raw=true "dotnet -ef info command")
+![Migration folder screenshot](screens/migration-folder.PNG?raw=true "dotnet -ef info command")
 
 
 * For listing migrations
@@ -454,7 +454,7 @@ Entity Framework sees our class in DbSet and decide to create a table.
 dotnet-ef migrations list -s ..\LocantaApp\LocantaApp.csproj
 ```
 
-![executing dotnet -ef info command ](screens/ef-migration.png?raw=true "dotnet -ef info command")
+![executing dotnet -ef info command ](screens/ef-migration.PNG?raw=true "dotnet -ef info command")
 
 
 * Applying migrations to Database
@@ -463,7 +463,7 @@ dotnet-ef database update  -s ..\LocantaApp\LocantaApp.csproj
 ```
 
 
-![After applying migrations ](screens/applying-migrations.png?raw=true "dotnet -ef info command")
+![After applying migrations ](screens/applying-migrations.PNG?raw=true "dotnet -ef info command")
 
 
 ## Razor Pages
@@ -615,10 +615,10 @@ Creating project `LocantaApp.Data`.
 ## Installing Entity Framework for data access
 
 Install framework by right clicking `LocantaApp.Data` project select `Manage NuGet package` and search entityframeworkcore.
-![Alt text](screens/entityframeworkcoreinstall.png?raw=true "Installing Entity Framework Core.")
+![Installing Entity Framework Core.](screens/entityframeworkcoreinstall.png?raw=true "Installing Entity Framework Core.")
 
 Install all the listed item here
-![Alt text](screens/installedpackages.png?raw=true "Installing Entity Framework Core.")
+![Installed packages](screens/installedpackages.PNG?raw=true "Installing Entity Framework Core.")
 
 Install `dotnet-ef`  command line tool
 
@@ -630,7 +630,7 @@ Execute following command inside `LocantaApp.Data` project
 ```bash 
 dotnet-ef dbcontext list
 ```
-![Alt text](screens/dbcontext.png?raw=true "Installing Entity Framework Core.")
+![DB Context](screens/dbcontext.PNG?raw=true "DB Context.")
 
 Install `sqlite` using cli in `LocantaApp.Data` folder.
 ```bash 
@@ -679,7 +679,7 @@ Now execute following command inside _*LocantaApp.Data*_ folder.
 dotnet-ef dbcontext info -s ..\LocantaApp\LocantaApp.csproj
 ```
 
-![Alt text](screens/dotnet-ef-info.png?raw=true "dotnet -ef info command")
+![dotnet -ef info](screens/dotnet-ef-info.PNG?raw=true "dotnet -ef info command")
 
 If we only call this command inside *LocantaApp.Data* it will fail. 
 ```bash
@@ -705,7 +705,7 @@ After calling this command we can see our migration inside `Migration` folder. E
 
 Entity Framework sees our class in DbSet and decide to create a table.
  
-![Migration folder screenshot](screens/migration-folder.png?raw=true "dotnet -ef info command")
+![Migration folder screenshot](screens/migration-folder.PNG?raw=true "dotnet -ef info command")
 
 
 * For listing migrations
@@ -713,7 +713,7 @@ Entity Framework sees our class in DbSet and decide to create a table.
 dotnet-ef migrations list -s ..\LocantaApp\LocantaApp.csproj
 ```
 
-![executing dotnet -ef info command ](screens/ef-migration.png?raw=true "dotnet -ef info command")
+![executing dotnet -ef info command ](screens/ef-migration.PNG?raw=true "dotnet -ef info command")
 
 
 * Applying migrations to Database
@@ -722,7 +722,7 @@ dotnet-ef database update  -s ..\LocantaApp\LocantaApp.csproj
 ```
 
 
-![After applying migrations ](screens/applying-migrations.png?raw=true "dotnet -ef info command")
+![After applying migrations ](screens/applying-migrations.PNG?raw=true "dotnet -ef info command")
 
 
 ## Razor Pages
