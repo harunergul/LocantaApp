@@ -99,7 +99,7 @@ Install framework by right clicking `LocantaApp.Data` project select `Manage NuG
 ![Alt text](screens/entityframeworkcoreinstall.png?raw=true "Installing Entity Framework Core.")
 
 Install all the listed item here
-![Alt text](screens/installedpackages.png?raw=true "Installing Entity Framework Core.")
+![Alt text](screens/installedpackages.PNG?raw=true "Installing Entity Framework Core.")
 
 Install `dotnet-ef`  command line tool
 
@@ -186,7 +186,7 @@ After calling this command we can see our migration inside `Migration` folder. E
 
 Entity Framework sees our class in DbSet and decide to create a table.
  
-![Migration folder screenshot](screens/migration-folder.png?raw=true "dotnet -ef info command")
+![Migration folder screenshot](screens/migration-folder.PNG?raw=true "dotnet -ef info command")
 
 
 * For listing migrations
@@ -194,7 +194,7 @@ Entity Framework sees our class in DbSet and decide to create a table.
 dotnet-ef migrations list -s ..\LocantaApp\LocantaApp.csproj
 ```
 
-![executing dotnet -ef info command ](screens/ef-migration.png?raw=true "dotnet -ef info command")
+![executing dotnet -ef info command ](screens/ef-migration.PNG?raw=true "dotnet -ef info command")
 
 
 * Applying migrations to Database
