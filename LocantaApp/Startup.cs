@@ -70,6 +70,23 @@ namespace LocantaApp
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
             });
+
+            app.Use(SayHelloMiddleware);
+        }
+
+        private RequestDelegate SayHelloMiddleware(RequestDelegate nextMiddleware)
+        {
+            return async ctx =>
+            {
+                if (ctx.Request.Path == "/hello")
+                {
+                    await ctx.Response.WriteAsync("Hello, World!");
+                }
+                else
+                {
+                    await nextMiddleware(ctx);
+                }
+            };
         }
     }
 }
