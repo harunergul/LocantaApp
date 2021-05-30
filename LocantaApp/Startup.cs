@@ -14,23 +14,39 @@ using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 
+ 
 namespace LocantaApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            _env = env;
         }
 
         public IConfiguration Configuration { get; }
+        private readonly IWebHostEnvironment _env;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         { 
             services.AddDbContextPool<LocantaAppDbContext>(options => {
-                options.UseSqlite(Configuration.GetConnectionString("LocantaAppDb"));
+
+                if (_env.IsDevelopment())
+                {
+                    options.UseMySQL("server=localhost;database=locantaappdb;user=appuser;password=Apppasswd123.");
+                    //or
+                    options.UseMySQL(Configuration.GetConnectionString("LocantaAppDb"));
+                }
+                else
+                {
+                    options.UseSqlite(Configuration.GetConnectionString("LocantaAppDb"));
+                }
+            
             });
+
+
 
             // services.AddSingleton<IRestaurantData, InMemmoryRestaturantData>();
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
