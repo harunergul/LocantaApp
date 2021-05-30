@@ -909,3 +909,47 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             };
         }
 ```
+
+## Logging
+
+Logging configuration is done inside `appsettings.json`. 
+```csharp
+namespace LocantaApp.Pages.Restaurants
+{
+    public class ListModel : PageModel
+    {
+        private readonly IConfiguration config;
+        private readonly IRestaurantData restaurant;
+        
+        private readonly ILogger<ListModel> Logger;
+        
+        [BindProperty(SupportsGet =true)] // basic model binding with Page and PageModel
+        public string SearchTerm { get; set; }
+        
+        [TempData]
+        public string Message { get; set; }
+        public IEnumerable<Restaurant> restaurants;
+        public ListModel(IConfiguration config, IRestaurantData restaurant , ILogger<ListModel> logger)
+        {
+            this.config = config;
+            this.restaurant = restaurant;
+            this.Logger = logger;
+        }
+        
+
+        public void OnGet()
+        {
+            Logger.LogInformation("Do something");
+          //  Message = config["AuthorName"];
+            this.restaurants = this.restaurant.GetRestaurantsByName(SearchTerm);
+        }
+    }
+}
+```
+
+
+#### Overriding settings
+As we see in the configuration file there are several way to configure the ASP.NET core application. We can override existing appsettings using environment variables and command line arguments.
+
+
+![Configuration](screens/configuration.JPG?raw=true "Configuration")

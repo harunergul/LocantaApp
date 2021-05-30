@@ -7,6 +7,7 @@ using LocantaApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace LocantaApp.Pages.Restaurants
 {
@@ -15,6 +16,7 @@ namespace LocantaApp.Pages.Restaurants
         private readonly IConfiguration config;
         private readonly IRestaurantData restaurant;
         
+        private readonly ILogger<ListModel> Logger;
         
         [BindProperty(SupportsGet =true)] // basic model binding with Page and PageModel
         public string SearchTerm { get; set; }
@@ -22,15 +24,17 @@ namespace LocantaApp.Pages.Restaurants
         [TempData]
         public string Message { get; set; }
         public IEnumerable<Restaurant> restaurants;
-        public ListModel(IConfiguration config, IRestaurantData restaurant)
+        public ListModel(IConfiguration config, IRestaurantData restaurant , ILogger<ListModel> logger)
         {
             this.config = config;
             this.restaurant = restaurant;
+            this.Logger = logger;
         }
         
 
         public void OnGet()
         {
+            Logger.LogInformation("Do something");
           //  Message = config["AuthorName"];
             this.restaurants = this.restaurant.GetRestaurantsByName(SearchTerm);
         }
