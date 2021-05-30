@@ -1004,3 +1004,31 @@ dotnet-ef migrations add <migrationName> -s ..\LocantaApp\LocantaApp.csproj
 ```bash
 dotnet-ef database update  -s ..\LocantaApp\LocantaApp.csproj
 ```
+
+## Pubslishing Application
+
+Inside the web project directory  execute following command.
+```bash
+dotnet publish -o c:\temp\LocantaApp
+```
+
+### Lunching application from command line
+Visit the publish directory and execute command with assembly. 
+
+```bash
+$ c:\temp\LocantaApp
+$ dotnet LocantaApp.dll
+```
+
+Our application will throw an error because there is no `node_module` folder inside this directory. One way to solve the problem is to execute `npm install` inside this directory. But we want to automate our deployment process. So there should be a better way.
+
+Add these item to `.csproj` file.
+
+```xml
+<Target Name="PostBuild" AfterTargets="ComputeFilesToPublish">
+    <Exec Command="npm install"></Exec>
+</Target>
+<ItemGroup> 
+    <Content Include="node_modules/**" CopyToPublishDirectory="PreserveNewest"/>
+</ItemGroup>
+```
