@@ -1012,7 +1012,7 @@ Inside the web project directory  execute following command.
 dotnet publish -o c:\temp\LocantaApp
 ```
 
-### Lunching application from command line
+### Lunching application from command line (Using MSBuild to execute npm install)
 Visit the publish directory and execute command with assembly. 
 
 ```bash
@@ -1032,3 +1032,28 @@ Add these item to `.csproj` file.
     <Content Include="node_modules/**" CopyToPublishDirectory="PreserveNewest"/>
 </ItemGroup>
 ```
+
+### Building self-contained application
+
+Previous deployment require dotnet framework installed on the computer. 
+We have to specify which runtime version should include.
+
+```bash 
+dotnet publish -o c:/temp/LocantaApp-self  --self-contained -r win-x64
+```
+
+
+Check [Runtime identifiers catalog](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog "Runtime identifiers catalog")
+
+we can run applicatin in two ways. One of them is to use computer dotnet run environment. such as 
+
+```bash 
+dotnet LocantaApp.dll
+```
+
+For the computer has no dotnet environment. (In this case on windows machine)
+```bash 
+LocantaApp.exe
+```
+
+![Runing exe file](screens/exerun.JPG?raw=true "Runnig exe file")
