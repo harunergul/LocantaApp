@@ -953,3 +953,54 @@ As we see in the configuration file there are several way to configure the ASP.N
 
 
 ![Configuration](screens/configuration.JPG?raw=true "Configuration")
+
+
+## Connecting to MySQL
+
+* Install below dependency  inside LocantaApp
+```bash
+dotnet add package MySql.EntityFrameworkCore --version 5.0.3.1
+```
+
+* Create schema with mysql-workbench
+![Creating schema](screens/mysql-creating-schema.png?raw=true "Creating schema")
+
+
+* Inside schama file passconfiguration
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{ 
+    services.AddDbContextPool<LocantaAppDbContext>(options => {
+
+        if (_env.IsDevelopment())
+        {
+            options.UseMySQL("server=localhost;database=locantaappdb;user=appuser;password=Apppasswd123.");
+             //or
+            options.UseMySQL(Configuration.GetConnectionString("LocantaAppDb"));
+        }
+        else
+        {
+            options.UseSqlite(Configuration.GetConnectionString("LocantaAppDb"));
+        }
+    
+    });
+
+
+
+    // services.AddSingleton<IRestaurantData, InMemmoryRestaturantData>();
+    services.AddScoped<IRestaurantData, SqlRestaurantData>();
+    services.AddControllers();
+    services.AddRazorPages();
+}
+```
+
+* Adding migrations 
+```bash
+dotnet-ef migrations add <migrationName> -s ..\LocantaApp\LocantaApp.csproj
+```
+
+* Applying migrations to Database
+```bash
+dotnet-ef database update  -s ..\LocantaApp\LocantaApp.csproj
+```
