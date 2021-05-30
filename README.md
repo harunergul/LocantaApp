@@ -8,6 +8,7 @@
 $ dotnet new webapp 
 ```
 
+<a href="#behind-the-scenes">Internal of ASP.NET Application</a>
 
 ### `.csproj` files
 
@@ -825,3 +826,7 @@ By default static files only served from `wwwroot` folder, but this behaviour is
 
 
 ![Development and prod scripts](screens/wwwroot-alternative.JPG?raw=true "Development and prod scripts")
+
+
+# Behind The Scenes
+
