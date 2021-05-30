@@ -830,3 +830,82 @@ By default static files only served from `wwwroot` folder, but this behaviour is
 
 # Behind The Scenes
 
+[HttpContext](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.httpcontext "HttpContext Class")
+
+## Middleware
+
+We register our middleware Startup.cs Configure method.
+
+
+
+
+Adds the AuthorizationMiddleware to the specified IApplicationBuilder, which enables authorization capabilities.
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection(); //Adds middleware for redirecting HTTP Requests to HTTPS.
+            app.UseStaticFiles(); // Enables static file serving
+            /*
+            by default wwwroot files content is only available 
+            but we can configure and add extra functionality 
+            */
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                            Path.Combine(Directory.GetCurrentDirectory(), @"node_modules")),
+                RequestPath = new PathString("/node_modules") 
+            });
+
+
+            app.UseRouting();
+            /*
+              Defines a point in the middleware pipeline where routing 
+              decisions are made, and an Endpoint is associated with the HttpContext. 
+            */
+
+            app.UseAuthorization();
+
+            /*
+            Adds the AuthorizationMiddleware to the specified IApplicationBuilder,
+             which enables authorization capabilities.
+             When authorizing a resource that is routed using endpoint routing, 
+             this call must appear between the calls to app.UseRouting() and 
+             app.UseEndpoints(...) for the middleware to function correctly.
+
+            */
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+                endpoints.MapControllers();
+            });
+
+            app.Use(SayHelloMiddleware);
+        }
+
+        private RequestDelegate SayHelloMiddleware(RequestDelegate nextMiddleware)
+        {
+            return async ctx =>
+            {
+                if (ctx.Request.Path.StartsWithSegments("/hello"))
+                {
+                    await ctx.Response.WriteAsync("Hello, World!");
+                }
+                else
+                {
+                    await nextMiddleware(ctx);
+                    // ctx.Response.StatusCode = 200; we can manipulate after other middlewares completed their processing
+                }
+            };
+        }
+```
